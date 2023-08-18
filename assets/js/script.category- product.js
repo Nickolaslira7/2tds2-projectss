@@ -13,6 +13,17 @@ class Product {
         this.price = price;
         this.category = category;
     }
+    updateCategory(id, name){
+        const category = this.getCategoriaById(id);
+        category.name = name;
+    }
+    deletCategory(id){
+        const category = this.getCategoriaById(id);
+        const index = this.categories.indexOf(category);
+
+        this.categories.splice(index, 1);
+
+    }
 }
 
 class ProductServirce{
@@ -76,7 +87,15 @@ function createProduct() {
 
     console.log(productList.products);
 }
-function findCategory(id){
+
+function findCategory(id) {
     const category = categoriesList.getCategoriaById(id);
-    console.log(category);
+
+    console.log(category.name);
+}
+
+function editCategory(id,name){
+    categoriesList.updateCategory(id, name);
+
+    console.log(categoriesList.categories);
 }
