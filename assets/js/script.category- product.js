@@ -88,6 +88,12 @@ function createCategory() {
 
     console.log(categoriesList.categories);
 }
+function createCategory(){
+    const categoryName = document.getElementById("categoryNameInput").value;
+    categoriesList.addCategory(categoryName);
+    console.log(categoriesList.categories);
+
+}
 
 function createProduct() {
     const productName = "Choco";
@@ -128,3 +134,4 @@ function findProduct(id){
 
     console.log(product.name);
 }
+function clear
