@@ -13,17 +13,7 @@ class Product {
         this.price = price;
         this.category = category;
     }
-    updateCategory(id, name){
-        const category = this.getCategoriaById(id);
-        category.name = name;
-    }
-    deletCategory(id){
-        const category = this.getCategoriaById(id);
-        const index = this.categories.indexOf(category);
-
-        this.categories.splice(index, 1);
-
-    }
+    
 }
 
 class ProductServirce{
@@ -41,6 +31,16 @@ class ProductServirce{
         this.products.push(product);
         category.products.push(product);
     }
+    getProductById(id){
+        return this.products.find((product) => product.id === id);
+    }
+    addProduct(name){
+        const id = this.nextProductId;
+        this.nextProductId ++;
+        
+        const product = new Product(id, name);
+        this.products.push(product);
+            }
 }
 
 class CategoryService {
@@ -59,6 +59,17 @@ this.categories.push(category);
 
     getCategoriaById(id){
         return this.categories.find((category) => category.id === id);
+    }
+
+    updateCategory(id, name){
+        const category = this.getCategoriaById(id);
+        category.name = name;
+    }
+    deleteCategory(id){
+const category = this.getCategoriaById(id);
+const index = this.categories.indexOf(category);
+
+this.categories.splice(index, 1)
     }
 }
 
@@ -94,13 +105,26 @@ function findCategory(id) {
     console.log(category.name);
 }
 
-function editCategory(id,name){
-    categoriesList.updateCategory(id, name);
+function UpdadeCategory(id, name) {
+    categoriesList.updadeCategory(id, name);
 
     console.log(categoriesList.categories);
 }
-function deleteCategory(id){
-   categoriesList.deleteCategory(id);
-   console.log(categoriesList.categories);;
 
+function editCategory(id, name) {
+    
+    categoriesList.updateCategory(id, name);
+    console.log(category.name);
+}
+
+function deleteCategory(id) {
+    categoriesList.deleteCategory(id);
+
+    console.log(categoriesList.categories);
+}
+
+function findProduct(id){
+    const product = productList.getProductById(id);
+
+    console.log(product.name);
 }
